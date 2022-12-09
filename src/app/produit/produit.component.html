@@ -1,0 +1,43 @@
+<div *ngIf="text; else elseBlock">
+  <p style="text-align:center; font-size:25px; color: green;">
+    LOT OF SURPRISES ARE WAITING FOR YOU !
+  </p>
+</div>
+
+<ng-template #elseBlock>
+  <p style="text-align:center; font-size:25px" >WELCOME TO SHOP</p>
+</ng-template>
+
+<mat-grid-list cols="3" >
+
+  <mat-grid-list cols="3" >
+    <mat-grid-tile *ngFor="let item of products" color="primary" >
+
+      <mat-card class="example-card" >
+
+        <img mat-card-image src="{{item.picture}}" >
+
+        <mat-card-header >
+          <mat-card-title >
+            <b>{{item.name}}</b>
+          </mat-card-title>
+        </mat-card-header>
+        <br>
+          <mat-card-subtitle>
+            <b>Spécifications :</b>
+            <li>Color : {{item.specifications.color}}</li>
+            <li>Weight : {{item.specifications.weight}}</li>
+            <li>Storage : {{item.specifications.storage}}</li>
+            <li>Price : {{item.specifications.price}}</li>
+          </mat-card-subtitle>
+
+        <mat-card-actions style="text-align:center">
+          <button
+          mat-raised-button class="button"  (mouseover)="text=true" (mouseout)="text=false" (click)="addToCart(item)">AJOUTER AU PANIER</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-grid-list>
+
